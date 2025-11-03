@@ -1,0 +1,4 @@
+config BR2_PACKAGE_JS_STYLE_CO_ROUTINE
+    bool "js-style-co-routine"
+    help
+        JavaScript Style C++ Co-Routine Library

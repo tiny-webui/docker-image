@@ -1,0 +1,4 @@
+config BR2_PACKAGE_TEV_CPP
+    bool "tev-cpp"
+    help
+        Tiny event loop C++
