@@ -5,7 +5,7 @@
 ################################################################################
 
 
-TUI_SERVER_VERSION = 375f4117b2e40088f93c72a92885a0a978508041
+TUI_SERVER_VERSION = 76e15bd8422fe4458b8c7a1595fbbe1743241c72
 TUI_SERVER_SITE = https://github.com/tiny-webui/server.git
 TUI_SERVER_SITE_METHOD = git
 TUI_SERVER_INSTALL_STAGING = NO
