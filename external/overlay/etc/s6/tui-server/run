@@ -1,0 +1,5 @@
+#!/bin/sh
+
+mkdir -p /root/data
+rm -f /tmp/tui-server.sock
+exec /bin/tui-server -d /root/data/tui.db -u /tmp/tui-server.sock

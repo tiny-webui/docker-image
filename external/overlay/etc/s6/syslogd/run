@@ -1,0 +1,5 @@
+#!/bin/sh
+
+mkdir -p /root/log
+# 10 * 100kB log files, run in foreground
+exec /sbin/syslogd -O /root/log/messages -s 100 -b 10 -n

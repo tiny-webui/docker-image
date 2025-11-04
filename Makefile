@@ -1,7 +1,7 @@
 EXTERNAL_PATH=external
 EXTERNAL_CONFIG_NAME=tiny-webui-x64_defconfig
 
-all:image
+all:docker-image
 
 .PHONY:config
 config:
@@ -24,6 +24,13 @@ image:config
 	rm -rf output
 	mkdir -p output
 	cp buildroot/output/images/rootfs.tar output
+
+.PHONY:docker-image
+docker-image:image
+	- docker rmi tiny-webui:latest
+	docker build -f docker/Dockerfile -t tiny-webui:latest .
+	docker save tiny-webui:latest -o output/tiny-webui.tar
+	docker rmi tiny-webui:latest
 
 .PHONY:dl_cache
 dl_cache:config
