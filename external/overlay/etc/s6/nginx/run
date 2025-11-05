@@ -3,6 +3,6 @@
 mkdir -p /tmp/nginx
 rm -f /var/cache/nginx
 mkdir -p /var/cache
-ln -s /var/cache/nginx /tmp/nginx
+ln -s /tmp/nginx /var/cache/nginx
 
 exec /sbin/nginx -c /etc/nginx/nginx.conf
