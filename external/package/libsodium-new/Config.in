@@ -1,0 +1,18 @@
+config BR2_PACKAGE_LIBSODIUM_NEW
+	bool "libsodium-new"
+	help
+	  A modern and easy-to-use crypto library.
+
+	  http://libsodium.org/
+
+if BR2_PACKAGE_LIBSODIUM_NEW
+
+config BR2_PACKAGE_LIBSODIUM_NEW_FULL
+	bool "all functions"
+	default y
+	help
+	  Build all seldom used and obsolete functions. Without
+	  this option, only the minimal set of normally used
+	  functions is built.
+
+endif

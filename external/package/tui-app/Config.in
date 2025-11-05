@@ -1,0 +1,5 @@
+config BR2_PACKAGE_TUI_APP
+    bool "tui-app"
+    default y
+    help
+        Tiny WebUI web app

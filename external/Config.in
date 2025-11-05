@@ -1,0 +1,9 @@
+menu "tiny_webui package"
+
+source "$BR2_EXTERNAL_TINY_WEBUI_PATH/package/js-style-co-routine/Config.in"
+source "$BR2_EXTERNAL_TINY_WEBUI_PATH/package/libsodium-new/Config.in"
+source "$BR2_EXTERNAL_TINY_WEBUI_PATH/package/tev-cpp/Config.in"
+source "$BR2_EXTERNAL_TINY_WEBUI_PATH/package/tui-app/Config.in"
+source "$BR2_EXTERNAL_TINY_WEBUI_PATH/package/tui-server/Config.in"
+
+endmenu
