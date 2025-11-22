@@ -29,11 +29,18 @@ image:config
 	cp buildroot/output/images/rootfs.tar $(IMAGE_OUTPUT_DIR)/
 
 .PHONY:docker-image
-docker-image:image
-	- docker rmi tiny-webui:latest
-	docker build -f docker/Dockerfile -t tiny-webui:latest .
-	docker save tiny-webui:latest -o $(OUTPUT_DIR)/tiny-webui.tar
-	docker rmi tiny-webui:latest
+docker-image:
+	$(MAKE) image
+	$(MAKE) image TARGET_PLATFORM=arm64
+	rm -rf $(OUTPUT_DIR)/amd64
+	ln -sf x64 $(OUTPUT_DIR)/amd64
+	docker buildx create || true
+	docker buildx build \
+		--platform linux/amd64,linux/arm64 \
+		-f docker/Dockerfile \
+		-t tiny-webui:latest \
+		--output type=oci,dest=$(OUTPUT_DIR)/tiny-webui.tar \
+		.
 
 .PHONY:dl_cache
 dl_cache:config
@@ -46,4 +53,4 @@ dl_cache:config
 .PHONY:clean
 clean:
 	$(MAKE) -C buildroot distclean
-	rm -rf output
+	rm -rf $(OUTPUT_DIR)
