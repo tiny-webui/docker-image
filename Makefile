@@ -1,5 +1,8 @@
 EXTERNAL_PATH=external
-EXTERNAL_CONFIG_NAME=tiny-webui-x64_defconfig
+TARGET_PLATFORM?=x64
+EXTERNAL_CONFIG_NAME=tiny-webui-$(TARGET_PLATFORM)_defconfig
+OUTPUT_DIR=output
+IMAGE_OUTPUT_DIR=$(OUTPUT_DIR)/$(TARGET_PLATFORM)
 
 all:docker-image
 
@@ -21,15 +24,15 @@ image:config
 	mkdir -p dl_cache
 	cp -r dl_cache buildroot/dl
 	$(MAKE) -C buildroot 
-	rm -rf output
-	mkdir -p output
-	cp buildroot/output/images/rootfs.tar output
+	rm -rf $(IMAGE_OUTPUT_DIR)
+	mkdir -p $(IMAGE_OUTPUT_DIR)
+	cp buildroot/output/images/rootfs.tar $(IMAGE_OUTPUT_DIR)/
 
 .PHONY:docker-image
 docker-image:image
 	- docker rmi tiny-webui:latest
 	docker build -f docker/Dockerfile -t tiny-webui:latest .
-	docker save tiny-webui:latest -o output/tiny-webui.tar
+	docker save tiny-webui:latest -o $(OUTPUT_DIR)/tiny-webui.tar
 	docker rmi tiny-webui:latest
 
 .PHONY:dl_cache
