@@ -1,6 +1,8 @@
 FROM scratch
 
-ADD output/rootfs.tar /
+ARG TARGETARCH
+
+ADD output/${TARGETARCH}/rootfs.tar /
 
 WORKDIR /
 
