@@ -1,7 +1,6 @@
 name: Build and Publish Builder Image
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       publish:
@@ -41,6 +40,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .github/builder
-          push: ${{ inputs.publish }}
+          push: ${{ inputs.publish == true }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
