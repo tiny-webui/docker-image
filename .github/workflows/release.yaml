@@ -1,0 +1,72 @@
+name: Build and Release
+
+on:
+  push:
+    # branches:
+    #   - 'main'
+    # tags:
+    #   - '*'
+  pull_request:
+    branches:
+      - 'main'
+
+jobs:
+  build-rootfs:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/tiny-webui/image-builder:latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build RootFS
+        run: make image -j$(nproc)
+
+      - name: Upload RootFS artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rootfs
+          path: output/
+
+  publish-container:
+    needs: build-rootfs
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download RootFS artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: rootfs
+          path: output
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/tiny-webui/tiny-webui
+          tags: |
+            type=ref,event=tag
+            type=raw,value=latest
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: docker/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
