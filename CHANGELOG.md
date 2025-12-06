@@ -1,3 +1,13 @@
+# 0.1.2
+
+## What's new
+
+## Fixes
+
+* Disable browser cache for files with fixed names
+
+## Changes
+
 # 0.1.1
 
 ## What's new
