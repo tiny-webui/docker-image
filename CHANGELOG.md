@@ -1,3 +1,16 @@
+# 0.1.3
+
+## What's new
+
+* Enable gzip compression for static resources
+
+## Fixes
+
+## Changes
+
+* Update tui-app to 0.1.2
+* Update tui-server to 0.1.1
+
 # 0.1.2
 
 ## What's new
