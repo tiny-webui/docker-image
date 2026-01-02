@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-TUI_APP_VERSION = 0.1.1
+TUI_APP_VERSION = 0.1.2
 TUI_APP_SITE = https://github.com/tiny-webui/webapp.git
 TUI_APP_SITE_METHOD = git
 TUI_APP_GIT_SUBMODULES = YES
