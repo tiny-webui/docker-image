@@ -8,7 +8,7 @@
 
 ## Changes
 
-* Update tui-app to 0.1.2
+* Update tui-app to 0.1.3
 * Update tui-server to 0.1.1
 
 # 0.1.2
