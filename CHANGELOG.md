@@ -1,3 +1,13 @@
+# 0.1.5
+
+## What's new
+
+## Fixes
+
+## Changes
+
+* Update tui-app to 0.1.5
+
 # 0.1.4
 
 ## What's new
