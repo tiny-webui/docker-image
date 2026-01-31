@@ -2,7 +2,6 @@ config BR2_PACKAGE_TUI_SERVER
     bool "tui-server"
     default y
     select BR2_PACKAGE_LIBCURL
-    select BR2_PACKAGE_LIBWEBSOCKETS
     select BR2_PACKAGE_SQLITE
     select BR2_PACKAGE_UTIL_LINUX
     select BR2_PACKAGE_UTIL_LINUX_LIBUUID
@@ -11,5 +10,7 @@ config BR2_PACKAGE_TUI_SERVER
     select BR2_PACKAGE_JSON_FOR_MODERN_CPP
     select BR2_PACKAGE_TEV_CPP
     select BR2_PACKAGE_JS_STYLE_CO_ROUTINE
+    select BR2_PACKAGE_TINY_WEBSOCKET
+    select BR2_PACKAGE_ZSTD
     help
         Tiny WebUI server

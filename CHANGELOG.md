@@ -1,3 +1,18 @@
+# 0.1.8
+
+## What's new
+
+## Fixes
+
+## Changes
+
+* Update tui-app to 0.2.0
+* Update tui-server to 0.2.0
+* Replace libwebsockets with tiny-websocket
+* Replace openssl with wolfssl
+* Remove unused binaries in final build
+* Remove unused features in nginx
+
 # 0.1.7
 
 ## What's new
