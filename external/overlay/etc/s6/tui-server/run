@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# Wait for syslog socket to be ready
+while [ ! -S /dev/log ]; do
+  sleep 0.1
+done
+
+logger -t tui-server "Starting tui-server..."
+
 mkdir -p /root/data
 rm -f /tmp/tui-server.sock
 exec /bin/tui-server -d /root/data/tui.db -u /tmp/tui-server.sock

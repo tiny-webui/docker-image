@@ -5,4 +5,11 @@ rm -f /var/cache/nginx
 mkdir -p /var/cache
 ln -s /tmp/nginx /var/cache/nginx
 
+# Wait for syslog socket to be ready
+while [ ! -S /dev/log ]; do
+  sleep 0.1
+done
+
+logger -t nginx "Starting nginx..."
+
 exec /sbin/nginx -c /etc/nginx/nginx.conf
