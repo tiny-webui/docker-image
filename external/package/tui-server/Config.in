@@ -12,5 +12,6 @@ config BR2_PACKAGE_TUI_SERVER
     select BR2_PACKAGE_JS_STYLE_CO_ROUTINE
     select BR2_PACKAGE_TINY_WEBSOCKET
     select BR2_PACKAGE_ZSTD
+    select BR2_PACKAGE_XXHASH
     help
         Tiny WebUI server

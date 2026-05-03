@@ -8,5 +8,6 @@ done
 logger -t tui-server "Starting tui-server..."
 
 mkdir -p /root/data
+mkdir -p /root/data/files
 rm -f /tmp/tui-server.sock
-exec /bin/tui-server -d /root/data/tui.db -u /tmp/tui-server.sock
+exec /bin/tui-server -d /root/data/tui.db -f /root/data/files -u /tmp/tui-server.sock
