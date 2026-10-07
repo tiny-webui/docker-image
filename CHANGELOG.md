@@ -1,3 +1,14 @@
+# 0.3.0
+
+## What's new
+
+## Fixes
+
+## Changes
+
+* Update tui-app to 0.4.0
+* Update tui-server to 0.4.0
+
 # 0.2.0
 
 ## What's new
